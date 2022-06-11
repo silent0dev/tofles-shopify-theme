@@ -1,0 +1,163 @@
+<!--   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!--   GRODAS OTW-19 Tofles - begin -->
+<!-- modal (quickViewModal) -->
+<div class="modal fade"  id="modalProductInfo" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg-new">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
+      </div>
+      <div class="modal-body">
+       <div class="tt-layout-product-info">
+   Size Guide 
+   <div class="tt-table-responsive-md">
+      <br>
+      <table class="tt-table-modal-info">
+         <caption style="caption-side:top" class="tt-table-title">Size Men &amp; Women</caption>
+         <thead>
+            <tr>
+               <th class="kk-color sg-size-us">US Size</th>
+               <th class="sg-size-eu">EU Size</th>
+               <th class="sg-size-uk">UK Size</th>
+               <th class="sg-unit-in">Heel to toe <br>(Inch)</th>
+              <th class="sg-unit-cm">Heel to toe <br> (Centimeters)</th>
+            </tr>
+         </thead>
+         <tbody>
+            
+            <tr>
+               <td class="kk-color sg-size-us">4 - 5 (Women) </td>
+               <td class="sg-size-eu">35 - 36 (Women)</td>
+               <td class="sg-size-uk">3 - 4 (Women)</td>
+              <td class="sg-unit-in">8 1/2 - 8 7/8</td>
+              <td class="sg-unit-cm">21.6 - 22.5</td>
+            </tr>
+           
+            <tr>
+               <td class="kk-color sg-size-us">6 - 7 (Women) </td>
+               <td class="sg-size-eu">37 - 38 (Women)</td>
+               <td class="sg-size-uk">5 - 6 (Women)</td>
+               <td class="sg-unit-in">8 3/4 - 9 1/5 </td>
+              <td class="sg-unit-cm">22.2 - 23.4</td>
+            </tr>
+            <tr>
+               <td class="kk-color sg-size-us">8 - 9 (Women) </td>
+               <td class="sg-size-eu">39 - 40 (Women)</td>
+               <td class="sg-size-uk">7 - 8 (Women)</td>
+               <td class="sg-unit-in">9 1/4 - 9 3/4</td>
+              <td class="sg-unit-cm">23.5 - 24.8</td>
+            </tr>
+            <tr>
+               <td class="kk-color sg-size-us">6 - 7 (Men)</td>
+               <td class="sg-size-eu">40 - 41 (Men)</td>
+               <td class="sg-size-uk">5 - 6 (Men)</td>
+               <td class="sg-unit-in">9 5/8 - 9 3/8</td>
+              <td class="sg-unit-cm">23.8 - 24.4</td>
+            </tr>
+            <tr>
+               <td class="kk-color sg-size-us">8 - 9 (Men)</td>
+               <td class="sg-size-eu">42 - 43 (Men)</td>
+               <td class="sg-size-uk">7 - 8 (Men)</td>
+               <td class="sg-unit-in">10 - 10 3/8</td>
+              <td class="sg-unit-cm">25.4 - 26.4</td>
+            </tr>
+            <tr>
+               <td class="kk-color sg-size-us">10 - 11 (Men)</td>
+               <td class="sg-size-eu">44 - 45 (Men)</td>
+               <td class="sg-size-uk">9 - 10 (Men)</td>
+               <td class="sg-unit-in">10 5/8 - 11</td>
+              <td class="sg-unit-cm">27 - 27.9</td>
+            </tr>
+            <tr>
+               <td class="kk-color sg-size-us">12 - 13 (Men)</td>
+               <td class="sg-size-eu">46 - 47 (Men)</td>
+               <td class="sg-size-uk">11 - 12 (Men)</td>
+               <td class="sg-unit-in">11 3/8 - 11 1/2</td>
+              <td class="sg-unit-cm">28.9 - 29.2</td>
+            </tr>
+         </tbody>
+      </table>
+      <br>
+      <div style="text-align: left">
+         <p class="size__guideTitle"> Size Guide Information</p>
+         <p class="size__guideBody"> The inner length of shoe should be longer than foot length.<br>
+            For example, if your foot length (Heel to Toe) is 9.45inch, choose shoe size 8 - 9 (Womens)
+         </p>
+         <br>
+         <p class="size_guideEx">If your size is between two sizes: </p>
+         <p class="size__guideBody">
+            1. Choose a smaller size if your foot is thin. <br>
+            2. Choose a larger size if your foot is wide or normal.
+         </p>
+      </div>
+      <table class="tt-table-modal-info">
+      </table>
+   </div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let modalContainer = document.querySelector("#modalProductInfo");
+  let sizesUS = modalContainer.querySelectorAll(".sg-size-us");
+  let sizesEU = modalContainer.querySelectorAll(".sg-size-eu");
+  let sizesUK = modalContainer.querySelectorAll(".sg-size-uk");
+  let unitsInches = modalContainer.querySelectorAll(".sg-unit-in");
+  let unitsCentimeters = modalContainer.querySelectorAll(".sg-unit-cm");
+	
+  let modalObserver = new MutationObserver(observerCallback);
+  modalObserver.observe(modalContainer, {attributes: true})
+  
+  function showElements(elements) {
+  	Array.from(elements).forEach(element => element.style.display = "table-cell"); 
+  }
+  
+  function hideElements(elements) {
+  	Array.from(elements).forEach(element => element.style.display = "none"); 
+  }
+  
+  function displaySizes(region) {
+    showElements(sizesUS);
+    hideElements(sizesEU);
+    hideElements(sizesUK);
+    hideElements(unitsInches);
+    hideElements(unitsCentimeters);
+
+    switch (region) {
+      case "us":
+        showElements(sizesUS);
+        showElements(unitsInches);
+        break;
+        
+      case "eu":
+        showElements(sizesEU);
+        showElements(unitsCentimeters);
+        break;
+        
+      case "uk":
+        showElements(sizesUK);
+        showElements(unitsCentimeters);
+        break;
+        
+      default:
+        showElements(sizesUS);
+        showElements(unitsInches);
+        break;
+    }
+  }
+  
+  function observerCallback(mutationList, observer) {
+    mutationList.forEach(function(mutation) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        let region = (typeof window.visitorRegion !== typeof undefined) ? window.visitorRegion.world_region : "us";
+        displaySizes(region);
+      }
+    })
+  }
+  
+
+</script>
+<!--   GRODAS OTW-19 Tofles - end -->
+<!--   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->

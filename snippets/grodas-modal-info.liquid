@@ -1,0 +1,44 @@
+<!--   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!--   GRODAS OTW-19 Tofles - begin -->
+<!-- modal (quickViewModal) -->
+<div class="modal fade"  id="modalProductInfo-04" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg-new">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
+      </div>
+      <div class="modal-body">
+       <div class="tt-layout-product-info">
+       	  Popup title
+       	  <div class="tt-table-responsive-md">
+              <br>
+              TT TABLE MODAL INFO
+            {% if customer %}
+            {{customer.default_address.country}}
+<script>
+var city = {{ customer.default_address.country | json }};
+console.log("city", city);
+</script>
+{% endif %}
+              <br>
+              <div style="text-align: left">
+                 <p class="size__guideTitle">{{ product.title }}</p>
+                 <p class="size__guideBody">{{ product.description }}</p>
+                 <br>
+                 <p class="size_guideEx">Header 2 VARIANTS: </p>
+                 <p class="size__guideBody">
+                   {% for var in product.variants %}
+                   	{{ var.id }} | {{ var.title }}
+                    <img src="{{ var.featured_image | img_url:"100px" }}" />
+                   <br/>
+                   {% endfor %}
+                 </p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--   GRODAS OTW-19 Tofles - end -->
+<!--   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
